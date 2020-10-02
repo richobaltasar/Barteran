@@ -1,0 +1,382 @@
+﻿@model HomeModel
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+<style type="text/css">
+    .shadow {
+        -moz-box-shadow: 3px 3px 5px 6px #ccc;
+        -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+        box-shadow: 3px 3px 5px 6px #ccc;
+    }
+
+    #header {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        height: 70px; /* Height of the footer */
+        padding: 10px 5px 0px 5px;
+        padding-bottom: 0px;
+        background-color: transparent;
+    }
+
+        #header .kotak {
+            /*background-color: #7A2771BD;*/
+            background-image: linear-gradient(#95518D, #4B2947);
+            margin: 0px 0px 0px 0px;
+            text-align: center;
+            color: white;
+            max-height: 375px;
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+    .kotak p {
+        font-family: 'Segoe UI';
+        font-size: 12px;
+        color: white;
+        padding: 20px 10px 15px 10px;
+        text-align: left;
+    }
+
+    .kotak .img-left {
+        float: left;
+        padding: 5px 0px 20px 0px;
+    }
+
+    .kotak .menu-right {
+        float: right;
+        padding: 15px 20px 20px 10px;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 20px;
+        background-color: #9C5E95;
+    }
+
+    .Menu-Harta {
+        padding: 0px 0px 0px 0px;
+    }
+
+        .Menu-Harta .title-p {
+            padding: 10px 10px 0px 10px
+        }
+
+        .Menu-Harta p {
+            color: #9C5E95;
+            font-family: 'Segoe UI';
+            font-size: 12px;
+        }
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .slider {
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .slides {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+        .slides::-webkit-scrollbar {
+            width: 1px;
+            height: 0px;
+            color: #9C5E95;
+        }
+
+        .slides::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            border-radius: 0px;
+        }
+
+        .slides::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .slides > div {
+            flex-shrink: 0;
+            width: 60px;
+            height: 70px;
+            padding: 2px 2px 2px 2px;
+            margin: 2px 2px 2px 2px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid #9C5E95;
+            transform-origin: center center;
+            transform: scale(1);
+            transition: transform 0.5s;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            vertical-align: central;
+        }
+
+        .slides .image-menu {
+            max-width: 22px;
+            height: 25px;
+        }
+
+        .slides p {
+            color: #9C5E95;
+            font-family: 'Segoe UI';
+            font-size: 12px;
+            padding: 0px 0px 0px 0px;
+        }
+
+        .slides .NamaIcon {
+            color: #9C5E95;
+            font-family: 'Segoe UI';
+            font-size: 12px;
+            padding: 0px 0px 0px 0px;
+        }
+
+        .slides .value {
+            color: #9C5E95;
+            font-family: 'Segoe UI';
+            font-size: 12px;
+            font-weight: bold;
+            padding: 0px 0px 0px 0px;
+        }
+
+        .slides > div:target {
+            /*transform: scale(0.8); */
+        }
+
+    /* Don't need button navigation */
+    @@supports (scroll-snap-type) {
+        .slider > a {
+            display: none;
+        }
+    }
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 0;
+        text-align: center;
+    }
+        .container p {
+            margin-bottom: 0px;
+            margin-top: 10px;
+        }
+
+    .grid-item-a {
+        display: inline-block;
+        width: 40%;
+        height: 80px;
+        font-size: 0rem;
+        vertical-align: top;
+        margin-top:-10px;
+    }
+    .grid-item-b {
+        display: inline-block;
+        width: 20%;
+        height: 80px;
+        font-size: 0rem;
+        vertical-align: top;
+        margin-top: -10px;
+        align-content:center;
+    }
+    .grid-item-c {
+        display: inline-block;
+        width: 40%;
+        height: 80px;
+        font-size: 0rem;
+        vertical-align: top;
+        margin-top: -10px;
+    }
+
+    .payScan {
+        padding-top:10px;
+    }
+</style>
+
+@if (Model.Error == null)
+{
+    if (ViewBag.device != "")
+    {
+
+        <div id="header" class="">
+            <div class="kotak shadow" style="margin-top:0px;">
+                <img src="~/Images/Page/Beranda/avatar.png" class="img-left" />
+                <img src="~/Images/Page/Beranda/ID335-3354952_grocery-shoppin-.png" class="menu-right" />
+                <p>
+                    Hi Riko
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="Menu-Harta" style="margin-top:65px;">
+            
+
+            <div class="container">
+                <div class="grid-item-a" style="float:left;">
+                    <p style="text-align:left;">
+                        Harta Virtual
+                    </p>
+                    <div class="slides">
+                        <div id="slide-1"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Beras</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/berasIcon.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-1"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Ayam</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/clipart4430.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-1"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Sapi</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/Sapi_cd.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-1"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Kambing</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/sheep.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-1"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Emas</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/Emas.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-1"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon"></span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/Emas.png" class="image-menu" />
+                            <br />
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-b">
+                    <p style="text-align:center;">
+                        Pay Scan
+                    </p>
+                        <div class="payScan"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Beras</span>
+                            <br />
+                            <img src="~/Images/Page/Beranda/Qrcode.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                    
+                </div>
+                <div class="grid-item-c" style="float:right;">
+                    <p style="text-align:right;">
+                        Peliharaan
+                    </p>
+                    <div class="slides">
+                        <div id="slide-1"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Padi</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/Telur_cp.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-2"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Padi</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/padi.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-2"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Padi</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/padi.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                        <div id="slide-2"
+                             onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                            <span class="NamaIcon">Padi</span>
+                            <br />
+                            <img src="~/Images/Page/HartaAwal/padi.png" class="image-menu" />
+                            <br />
+                            <span class="value">3,3K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal" role="dialog" id="form-modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="padding:0px 0px 0px 0px;">
+                    <div class="modal-body " style="padding:0px 0px 20px 0px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            showInPopup = (url, title) => {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (res) {
+                        console.log(res);
+                        $('#form-modal .modal-body').html(res);
+                        $('#form-modal .modal-title').html(title);
+                        $('#form-modal').modal('show');
+                    },
+                    error: function (request, status, error) {
+                        $(".preloader").fadeOut();
+                    }
+                });
+
+            }
+        </script>
+
+    }
+    else
+    {
+        <p>
+            sorry belom support untuk laptop screen
+        </p>
+    }
+}
+else
+{
+    @await Html.PartialAsync("Error", Model.Error)
+}

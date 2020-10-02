@@ -1,8 +1,4 @@
-﻿
-
-
-
-@model HomeModel
+﻿@model HomeModel
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <style type="text/css">
@@ -14,7 +10,6 @@
         padding: 10px 10px 10px 10px;
         padding-bottom: 0px;
         background-color: white;
-
     }
 
     .kotak {
@@ -26,6 +21,7 @@
         border-top-left-radius: 50px;
         border-bottom-right-radius: 50px;
     }
+
         .kotak p {
             font-family: 'Segoe UI';
             font-size: 12px;
@@ -49,29 +45,33 @@
         -webkit-box-shadow: 3px 3px 5px 6px #ccc;
         box-shadow: 3px 3px 5px 6px #ccc;
     }
-    
+
     .harta-virtual {
         text-align: left;
         color: #9C5E95;
     }
+
         .harta-virtual .menu-container {
             margin: 10px 10px 10px 40px;
         }
 
     .menu-container button {
         margin-left: 10px;
-        margin-top:10px;
+        margin-top: 10px;
         border-color: #9C5E95;
         max-height: 85px;
+        width: 85px;
         padding: 10px 20px 10px 20px;
     }
+
     .harta-virtual .image-menu {
         max-width: 40px;
     }
-        .harta-virtual p {
-            color: #9C5E95;
-            font-family: 'Segoe UI';
-        }
+
+    .harta-virtual p {
+        color: #9C5E95;
+        font-family: 'Segoe UI';
+    }
 
     #footer {
         position: fixed;
@@ -82,12 +82,14 @@
         padding-bottom: 0px;
         background-color: white;
     }
+
         #footer hr {
             background-color: #7A2771BD;
             height: 6px;
             margin-top: 0px;
             margin-bottom: 5px;
         }
+
         #footer p {
             float: left;
             color: #8E4586;
@@ -98,6 +100,7 @@
             max-width: 250px;
             padding: 10px 10px 10px 10px;
         }
+
         #footer a {
             background-color: #8E4586ED;
             text-align: center;
@@ -106,6 +109,7 @@
             padding: 10px 10px 10px 10px;
             float: right;
         }
+
         #footer .btn {
             vertical-align: central;
             bottom: 0;
@@ -113,113 +117,152 @@
             padding-right: 30px;
             margin: 10px 10px 10px 10px;
         }
-    
+
+    #form-modal .bg-purple {
+        background-color: #7A2771BD;
+        /*background-image: linear-gradient(#95518D, #4B2947);*/
+    }
 </style>
 @if (Model.Error == null)
 {
-    if (ViewBag.device == "smartphone")
+    if (ViewBag.device != "")
     {
-        <div id="header" class="shadow">
-            <a href="@Url.Action("Index","Home")" style="margin:10px 10px 10px 10px;"> 
-                <span>
-                    <i class="fa fa-real"></i>
-                </span>
-                Kembali
-            </a>
+<div id="header" class="shadow">
+    <a href="@Url.Action("Index","Home")" style="margin:10px 10px 10px 10px;">
+        <span>
+            <i class="fa fa-real"></i>
+        </span>
+        Kembali
+    </a>
+</div>
+<div class="kotak" style="margin-top:70px;">
+    <p>
+        Hmmm, Karena anda pengguna baru, anda harus memilih harta virtual anda, seperti Beras, Emas, Kambing atau lain nya untuk dapat bertransaksi barter secara modern, Topup dikit dulu aja nanti cincaylah kalo kurang ….
+    </p>
+</div>
+<div class="harta-virtual">
+    <span class="dot"></span>
+    <p style="margin-top: -20px; margin-left: 40px;">Harta Virtual Barter Terpopuler</p>
+    <div class="menu-container">
+        <div class="row">
+            <button class="btn btn-outline-light shadow"
+                 onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
+                <img src="~/Images/Page/HartaAwal/berasIcon.png" class="image-menu" />
+                <p>Beras</p>
+            </button>
+            <button class="btn btn-outline-light shadow"
+                onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Ayam')">
+                <img src="~/Images/Page/HartaAwal/clipart4430.png" class="image-menu" />
+                <p>Ayam</p>
+            </button>
+            <button class="btn btn-outline-light shadow"
+                onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Ayam')">
+                <img src="~/Images/Page/HartaAwal/sheep.png" class="image-menu" />
+                <p>Kambing</p>
+            </button>
+            <button class="btn btn-outline-light shadow"
+                onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Ayam')">
+                <img src="~/Images/Page/HartaAwal/Sapi_cd.png" class="image-menu" />
+                <p>Sapi</p>
+            </button>
+            <button class="btn btn-outline-light shadow"
+                onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Ayam')">
+                <img src="~/Images/Page/HartaAwal/Bawang_b.png" class="image-menu" />
+                <p>Bawang</p>
+            </button>
+            <button class="btn btn-outline-light shadow"
+                onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Ayam')">
+                <img src="~/Images/Page/HartaAwal/cabe.png" class="image-menu" />
+                <p>Cabe</p>
+            </button>
+            <button class="btn btn-outline-light shadow"
+                onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Ayam')">
+                <img src="~/Images/Page/HartaAwal/AirGalonIcon.png" class="image-menu" />
+                <p>Air</p>
+            </button>
+            <button class="btn btn-outline-light shadow"
+                onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Ayam')">
+                <img src="~/Images/Page/HartaAwal/Emas.png" class="image-menu" />
+                <p>Emas</p>
+            </button>
         </div>
-        <div class="kotak" style="margin-top:70px;">
-            <p>
-                Hmmm, Karena anda pengguna baru, anda harus memilih harta virtual anda, seperti Beras, Emas, Kambing atau lain nya untuk dapat bertransaksi barter secara modern, Topup dikit dulu aja nanti cincaylah kalo kurang ….
-            </p>
+    </div>
+</div>
+
+<div class="kotak" style="margin-top:20px;">
+    <p class="title">
+        Atau kamu mau beli yang bisa dipelihara dulu seperti telur terus nanti kalo menetas ayam dan dipelihara, ayam nya jadi harta virtual kamu yang bisa ditransaksi untuk beli apa saja.
+    </p>
+
+</div>
+
+<div class="harta-virtual">
+    <span class="dot"></span>
+    <p style="margin-top: -20px; margin-left: 40px;">Tetas,Pelihara dan Jadikan sampai menjadi Harta Virtual Barter</p>
+    <div class="menu-container">
+        <div class="row">
+            <button class="btn btn-outline-light shadow">
+                <img src="~/Images/Page/HartaAwal/Telur_cp.png" class="image-menu" />
+                <p>Telur</p>
+            </button>
+            <button class="btn btn-outline-light shadow">
+                <img src="~/Images/Page/HartaAwal/padi.png" class="image-menu" />
+                <p>Padi</p>
+            </button>
         </div>
-        <div class="harta-virtual">
-            <span class="dot"></span>
-            <p style="margin-top: -20px; margin-left: 40px;">Harta Virtual Barter Terpopuler</p>
-            <div class="menu-container">
-                <div class="row">
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                </div>
+    </div>
+</div>
+<br style="margin-bottom:200px;" />
+
+<div id="footer" class="shadow">
+    <a class="btn shadow" href="@Url.Action("Beranda","Home")">
+        Beranda
+    </a>
+</div>
+
+<div class="modal" role="dialog" id="form-modal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="padding:0px 0px 0px 0px;">
+            <div class="modal-header bg-purple" style="padding: 10px 10px 10px 10px;">
+                <p class="modal-title text-white">Modal title</p>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body " style="padding:0px 0px 20px 0px;">
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="kotak" style="margin-top:20px;">
-            <p class="title">
-                Atau kamu mau beli yang bisa dipelihara dulu seperti telur terus nanti kalo menetas ayam dan dipelihara, ayam nya jadi harta virtual kamu yang bisa ditransaksi untuk beli apa saja.
-            </p>
+<script type="text/javascript">
+            showInPopup = (url, title) => {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (res) {
+                        console.log(res);
+                        $('#form-modal .modal-body').html(res);
+                        $('#form-modal .modal-title').html(title);
+                        $('#form-modal').modal('show');
+                    },
+                    error: function (request, status, error) {
+                        $(".preloader").fadeOut();
+                    }
+                });
 
-        </div>
-
-        <div class="harta-virtual">
-            <span class="dot"></span>
-            <p style="margin-top: -20px; margin-left: 40px;">Tetas,Pelihara dan Jadikan sampai menjadi Harta Virtual Barter</p>
-            <div class="menu-container">
-                <div class="row">
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                    <button class="btn btn-outline-light shadow">
-                        <img src="~/Images/Icon/clipart4430.png" class="image-menu" />
-                        <p>Ayam</p>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <br style="margin-bottom:200px;"/>
-        <div id="footer" class="shadow">
-            <a class="btn shadow" href="@Url.Action("Beranda","Home")">
-                Beranda
-            </a>
-        </div>
+            }
+</script>
 
     }
     else
     {
-        <p>
-            sorry belom support untuk laptop screen
-        </p>
+<p>
+    sorry belom support untuk laptop screen
+</p>
     }
 }
 else
 {
-    @await Html.PartialAsync("Error", Model.Error)
+@await Html.PartialAsync("Error", Model.Error)
 }

@@ -1,0 +1,155 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "";
+}
+
+<style type="text/css">
+    .shadow {
+        -moz-box-shadow: 3px 3px 5px 6px #ccc;
+        -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+        box-shadow: 3px 3px 5px 6px #ccc;
+    }
+
+    .center {
+        margin: auto;
+        width: 50%;
+        padding: 0px;
+    }
+
+    .background-header {
+        width: auto;
+        height:200px;
+        background-size: 100% 100%;
+        padding: 0px 0px 0px 0px;
+        border-radius: 5px 5px;
+        background-image: url("../../Images/Page/TopupBeras/cartoon-farm-with-farmers-agri.png");
+        background-repeat: no-repeat;
+    }
+
+    .circle {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        margin-top: -170px;
+        text-align: center;
+        padding: 20px 10px 10px 10px;
+        background-image: linear-gradient(#95518D, #4B2947);
+    }
+
+        .circle p {
+            font-family: 'Segoe UI';
+            font-size: 10px;
+            color: white;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .circle .image-menu {
+            margin-top: 0px;
+            height: 40px;
+            width: auto;
+            padding-top: 0px;
+            margin-bottom: 5px;
+        }
+    #form .lbl-left {
+        font-family: 'Segoe UI';
+        color: #1F1F1F80;
+        font-size: 12px;
+        float:left;
+    }
+    #form .lbl-right {
+        font-family: 'Segoe UI';
+        color: #1F1F1F80;
+        font-size: 12px;
+        float: right;
+    }
+    #form .btn {
+        font-size: 12px;
+        background-color: #8E4586ED;
+        color: white;
+        padding: 13px 10px 13px 10px;
+        font-weight:normal;
+        border-radius:10px 10px;
+    }
+    #form input {
+        border-color: #9C5E9542;
+    }
+    #form .number-separator{
+        text-align:right;
+    }
+    #ConvertToBeras {
+      text-align:right;   
+      border:hidden;
+      float:right;
+    }
+</style>
+
+<div class="background-header">
+</div>
+
+<div class="circle shadow center">
+    <p>Virtual Beras</p>
+    <img src="~/Images/Page/HartaAwal/berasIcon.png" class="image-menu" />
+    <p style="font-weight:bold;font-size:medium;">3,3 Kg</p>
+</div>    
+
+<div class="container form" style="margin-top:70px;" id="form">
+    <form action="">
+        <div class="form-group">
+            <label class="lbl-left">Nominal</label><span><label class="lbl-right" style="font-style:italic;">Minimal Rp 15.000</label></span>
+            <input class="form-control number-separator" id="Nominal">
+        </div>
+        <div class="form-group">
+            <label class="lbl-left">
+                Konversi ke Virtual Beras
+                <br />
+                Rp 15.000 = 1.000 gram
+
+            </label>
+            <span class="lbl-right"><span id="NominalInput"></span> / <span id="Harga">15</span></span>
+            <br />
+            <label class="lbl-right" style="margin-top:20px;">Gram</label>
+            <h1 id="ConvertToBeras" class="number-separator"></h1>
+
+        </div>
+        <button type="submit" class="btn btn-block">Masuk ke keranjang dulu</button>
+        <button type="submit" class="btn btn-danger btn-block">Bayar</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    var ConvertToBeras = $("#ConvertToBeras");
+    var Nominal = $("#Nominal");
+    var Harga = $("#Harga");
+    document.querySelectorAll('.number-separator').forEach((item) => {
+        item.addEventListener('input', (e) => {
+            if (/^[0-9.,]+$/.test(e.target.value)) {
+                e.target.value = parseFloat(
+                    e.target.value.replace(/,/g, '')
+                ).toLocaleString('en');
+                if (e.target.value.replace(",", "") >= 15000) {
+                    $("#NominalInput").text(e.target.value);
+                    var result = Math.round(e.target.value.replace(",", "") / Harga.text());
+                    ConvertToBeras.text(numberWithCommas(result));
+                }
+                else {
+                    var result = "0";
+                    ConvertToBeras.text(result);
+                }
+            } else {
+                e.target.value = e.target.value.substring(0, e.target.value.length - 1);
+            }
+        });
+    });
+    $(document).ready(function () {
+        Nominal.val("0");
+        var result = Math.round(Nominal.val().replace(",", "") / 15);
+        ConvertToBeras.text(numberWithCommas(result));
+        Nominal.focus();
+    });
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>
