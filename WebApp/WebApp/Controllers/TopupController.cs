@@ -28,7 +28,7 @@ namespace WebApp.Controllers
             var result = DeviceDetector.GetInfoFromUserAgent(userAgent);
             ViewBag.Device = result.Match.DeviceType.ToString();
             var model = new HomeModel();
-            if (ViewBag.Device != "")
+            if (ViewBag.Device == "smartphone")
             {
                 return await Task.Run(() => View(model));
             }

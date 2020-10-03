@@ -204,11 +204,25 @@
     .payScan {
         padding-top:10px;
     }
+    .payScan .NamaIcon {
+        color: #9C5E95;
+        font-family: 'Segoe UI';
+        font-size: 12px;
+        padding: 0px 0px 0px 0px;
+    }
+
+        .payScan .value {
+            color: #9C5E95;
+            font-family: 'Segoe UI';
+            font-size: 12px;
+            font-weight: bold;
+            padding: 0px 0px 0px 0px;
+        }
 </style>
 
 @if (Model.Error == null)
 {
-    if (ViewBag.device != "")
+    if (ViewBag.device == "smartphone")
     {
 
         <div id="header" class="">
@@ -224,12 +238,10 @@
 
 
         <div class="Menu-Harta" style="margin-top:65px;">
-            
-
             <div class="container">
                 <div class="grid-item-a" style="float:left;">
                     <p style="text-align:left;">
-                        Harta Virtual
+                        Harta Virtual Barter
                     </p>
                     <div class="slides">
                         <div id="slide-1"
@@ -284,15 +296,15 @@
                 </div>
                 <div class="grid-item-b">
                     <p style="text-align:center;">
-                        Pay Scan
+                        
                     </p>
                         <div class="payScan"
                              onclick="showInPopup('@Url.Action("TopupBerasAwal","Topup",new { id=1},Context.Request.Scheme)','Topup Virtual Beras')">
-                            <span class="NamaIcon">Beras</span>
+                            <span class="NamaIcon"></span>
                             <br />
                             <img src="~/Images/Page/Beranda/Qrcode.png" class="image-menu" />
                             <br />
-                            <span class="value">3,3K</span>
+                            <span class="value">Pay</span>
                         </div>
                     
                 </div>
@@ -338,7 +350,7 @@
             </div>
         </div>
 
-
+        <hr style="margin:30px 10px 0px 10px;"/>
 
         <div class="modal" role="dialog" id="form-modal">
             <div class="modal-dialog modal-lg">
