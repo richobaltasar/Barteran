@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{0914BE1E-3B9A-4860-ACAD-377DD32F4B3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{0914BE1E-3B9A-4860-ACAD-377DD32F4B3D}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DbBarteran", "DbBarteran\DbBarteran.sqlproj", "{514D8AE3-3FC7-4947-B555-F47162F38F04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{4CB5CF95-E994-4637-B53A-75CEBA3E5549}"
+	ProjectSection(SolutionItems) = preProject
+		..\Design\Barteran.xd = ..\Design\Barteran.xd
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,12 @@ Global
 		{0914BE1E-3B9A-4860-ACAD-377DD32F4B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0914BE1E-3B9A-4860-ACAD-377DD32F4B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0914BE1E-3B9A-4860-ACAD-377DD32F4B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{514D8AE3-3FC7-4947-B555-F47162F38F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{514D8AE3-3FC7-4947-B555-F47162F38F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{514D8AE3-3FC7-4947-B555-F47162F38F04}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{514D8AE3-3FC7-4947-B555-F47162F38F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{514D8AE3-3FC7-4947-B555-F47162F38F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{514D8AE3-3FC7-4947-B555-F47162F38F04}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
